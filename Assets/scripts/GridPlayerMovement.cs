@@ -11,9 +11,10 @@ public class GridPlayerMovement : MonoBehaviour
 
     public Animator anim;
 
-    void Start()
+    private void Start()
     {
         movePoint.parent = null;
+
     }
 
     // Update is called once per frame
@@ -57,5 +58,9 @@ public class GridPlayerMovement : MonoBehaviour
             anim.SetBool("moving", true);
         }
 
+
+        
     }
+
+    
 }
