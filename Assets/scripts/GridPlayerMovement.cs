@@ -11,6 +11,9 @@ public class GridPlayerMovement : MonoBehaviour
 
     public Animator anim;
 
+    public float CryAnimTimer;
+    bool CryAnimStart = false;
+
     private void Start()
     {
         movePoint.parent = null;
@@ -56,10 +59,33 @@ public class GridPlayerMovement : MonoBehaviour
         else
         {
             anim.SetBool("moving", true);
+            CryAnimTimer = 0;
         }
 
 
+        if (Input.GetKey(KeyCode.G) && CryAnimStart == false)
+        {
+            anim.SetBool("Cry", true);
+            Debug.Log("CRy");
+
+            CryAnimStart = true;
+            
+        }
+
+        if(CryAnimStart == true)
+        {
+            CryAnimTimer -= Time.deltaTime;
+
+            if (CryAnimTimer <= 0)
+            {
+                anim.SetBool("Cry", false);
+                CryAnimTimer = 2.1f;
+                CryAnimStart = false;
+            }
+        }
         
+
+
     }
 
     
